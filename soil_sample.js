@@ -1,7 +1,9 @@
+let moistureReading = 0
 basic.forever(function () {
-    pins.digitalWritePin(DigitalPin.P6, 1)
-    let sample: number = pins.analogReadPin(AnalogPin.P0)
-    basic.showNumber(sample)
-    pins.digitalWritePin(DigitalPin.P6, 0)
-    basic.pause(2000)
+ 
+ pins.digitalWritePin(DigitalPin.P6, 1)
+ moistureReading = Math.map(pins.analogReadPin(AnalogPin.P0), 10, 750, 0, 4)
+ basic.showNumber(Math.round(moistureReading))
+ pins.digitalWritePin(DigitalPin.P6, 0)
+ basic.pause(2000)
 })
